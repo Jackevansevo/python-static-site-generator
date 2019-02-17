@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="author" content="Jack Evans" />
+
+    <link rel="shortcut icon" type="image/png" href="/static/favicon.ico" />
+
+    <title>Jack Evans - {% block title %}Blog{% endblock %}</title>
+
+    <!-- Custom styles for this template -->
+    <link href="/static/style.css" rel="stylesheet" />
+
+    <!-- Syntax highlighting css -->
+    <link href="/static/pygments.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+
+    <footer>
+      <div class="avatar-container">
+        <img class="avatar" src="/static/avatar.jpg" alt="bulbasaur avatar" />
+      </div>
+      <div class="info">
+        <div class="name">Jack Evans</div>
+        <a href="https://github.com/Jackevansevo" rel="noopener">
+          <i class="fab fa-github" aria-hidden="true"></i> Jackevansevo</a
+        >
+        ·
+        <a href="https://twitter.com/ThisIsJackEvans" rel="noopener">
+          <i class="fab fa-twitter" aria-hidden="true"></i> ThisIsJackEvans</a
+        >
+        <br />
+      </div>
+    </footer>
+  </body>
+</html>

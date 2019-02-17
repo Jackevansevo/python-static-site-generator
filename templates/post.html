@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block content %}
+<article>
+  <a href="/">View all posts</a>
+  <h1>{{post.title}}</h1>
+  <aside class="time">
+    <i>Posted <time>{{post['date'].strftime('%B %d, %Y')}}</time></i>
+  </aside>
+  <content>
+    {{content}}
+  </content>
+</article>
+{% endblock %}
