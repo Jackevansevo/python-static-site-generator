@@ -15,6 +15,7 @@ from livereload import Server
 from blog.build import build
 
 # [TODO] Have live reload only rebuild the blog posts that have changed
+# [TODO] Figure out how to best serve static assets locally
 
 
 def serve_handler(args: Namespace) -> None:
@@ -106,7 +107,7 @@ def main() -> None:
     # Set verbosity
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
-    
+
     if vars(args):
         args.func(args)
     else:
