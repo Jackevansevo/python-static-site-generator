@@ -60,16 +60,22 @@ def main() -> None:
 
     # parser for the "build" command
     parser_new = subparsers.add_parser("new")
-    parser_new.set_defaults(func=new_handler)
     parser_new.add_argument("fname")
+    parser_new.set_defaults(func=new_handler)
 
     # parser for the "build" command
     parser_build = subparsers.add_parser("build")
     parser_build.add_argument(
-        "-D", "--drafts", action="store_true", help="whether to include draft posts",
+        "-D",
+        "--drafts",
+        action="store_true",
+        help="whether to include draft posts",
     )
     parser_build.add_argument(
-        "-v", "--verbose", action="store_true", help="verbose",
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="verbose",
     )
     parser_build.set_defaults(func=build_handler)
 
@@ -82,7 +88,10 @@ def main() -> None:
         help="opens the site in a browser window",
     )
     parser_serve.add_argument(
-        "-D", "--drafts", action="store_true", help="whether to include draft posts",
+        "-D",
+        "--drafts",
+        action="store_true",
+        help="whether to include draft posts",
     )
     parser_serve.add_argument(
         "-p", "--port", action="store_true", help="port to serve on", default=8080
@@ -94,9 +103,6 @@ def main() -> None:
         help="whether to watch files for changes",
         default=False,
     )
-    parser_serve.add_argument(
-        "-v", "--verbose", action="store_true", help="verbose",
-    )
     parser_serve.set_defaults(func=serve_handler)
 
     logging.basicConfig(level=logging.INFO)
@@ -105,7 +111,7 @@ def main() -> None:
     args = parser.parse_args()
 
     # Set verbosity
-    if args.verbose:
+    if getattr(args, "verbose", False):
         logging.getLogger().setLevel(logging.DEBUG)
 
     if vars(args):
