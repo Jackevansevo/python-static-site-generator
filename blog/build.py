@@ -43,7 +43,7 @@ def write_posts(build_drafts=False) -> Sequence[frontmatter.Post]:
     posts = []
     for source in pathlib.Path(".").glob("posts/*.md"):
         post = parse_source(source)
-        if post.get('draft') and not build_drafts:
+        if post.get("draft") and not build_drafts:
             logging.debug(f"Skipped - {post.metadata.get('title')!r}")
             # Skip draft posts
             continue
@@ -63,6 +63,13 @@ def write_index(posts: Sequence[frontmatter.Post]) -> None:
     path.write_text(rendered)
 
 
+def write_about():
+    path = pathlib.Path(os.path.join(ROOT, "public/about.html"))
+    template = jinja_env.get_template("about.html")
+    rendered = template.render()
+    path.write_text(rendered)
+
+
 def write_pygments_style_sheet() -> None:
     """Returns the CSS for the given Pygments style."""
     formatter = HtmlFormatter(style="vs")
@@ -79,4 +86,5 @@ def build(build_drafts=False) -> Sequence[frontmatter.Post]:
     write_pygments_style_sheet()
     posts = write_posts(build_drafts)
     write_index(posts)
+    write_about()
     return posts

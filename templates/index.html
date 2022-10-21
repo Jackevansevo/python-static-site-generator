@@ -1,18 +1,25 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<nav>
-  <h1>My blog posts</h1>
-  <dl class="posts-list">
-  {% for post in posts %}
-    <a href="posts/{{post.stem}}">
-      <dt>{{post.title}}</dt>
-      <dd>
-        <time>{{post['date'].strftime('%B %d, %Y')}}</time>
-      </dd>
-      </span>
-    </a>
-  {% endfor %}
-  </dl>
-</nav>
+<hader>
+<h1>All Posts</h1>
+</header>
+<table>
+  <thead>
+    <tr>
+      <th class="date">Date</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for post in posts %}
+    <tr>
+      <td class="date">
+	<time datetime="{{ post['date'] }}">{{ post['date'].strftime('%d/%m/%Y') }}</time>
+      </td>
+      <td><a href="posts/{{ post.stem }}">{{ post.title }}</a></td>
+    </tr>
+    </tbody>
+    {% endfor %}
+</table>
 {% endblock %}

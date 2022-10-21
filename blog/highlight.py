@@ -21,8 +21,7 @@ def highlight(content: str) -> str:
     formatter = pygments.formatters.HtmlFormatter(nowrap=True)
 
     code_expr = re.compile(
-        r'<pre><code class="language-(?P<lang>.+?)">(?P<code>.+?)'
-        r"</code></pre>",
+        r'<pre><code class="language-(?P<lang>.+?)">(?P<code>.+?)' r"</code></pre>",
         re.DOTALL,
     )
 
@@ -36,12 +35,7 @@ def highlight(content: str) -> str:
 
         code = match.group("code")
 
-        # Decode html entities in the code. cmark tries to be helpful and
-        # translate '"' to '&quot;', but it confuses pygments. Pygments will
-        # escape any html entities when re-writing the code.
-        code = html.parser.HTMLParser().unescape(code)
-
-        highlighted = pygments.highlight(code, lexer, formatter)
+        highlighted = pygments.highlight(html.unescape(code), lexer, formatter)
 
         return "<pre>{}</pre>".format(highlighted)
 
